@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Document</title>
+    <style>
+        .main {
+            /* background: linear-gradient(to right, #00ccff 0%, #ffff66 100%); */
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-repeat: no-repeat;
+
+
+            background: linear-gradient(-45deg, #eeb052, #3cabe7, #d523cc, #d52326);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+            75%{
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+
+        .main-glass {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-repeat: no-repeat;
+            background-color: rgb(255, 255, 255, 0.25);
+            border: 1px solid rgb(255, 255, 255, 0.40);
+            box-shadow: 0 15px 35px rgb(255, 255, 255,0.05);
+            width: 70%;
+            height: 80vh;
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            z-index: 1;
+        }
+
+        .glass {
+            padding-right: 1rem;
+            padding-bottom: 0.5rem;
+            background-color: rgb(255, 255, 255, 0.2);
+            max-width:100% ;
+            max-height: 26.7rem;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            z-index: 1;
+            box-shadow: 0 15px 35px rgb(255, 255, 255,0.05);
+        }
+
+        input[type=button] {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 0.5rem;
+            border: 1px solid;
+            font-size: 1.5rem;
+
+        }
+
+
+        .size-btn {
+            margin: 0.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            border-radius: 10px;
+            display: block;
+            border: 0px;
+            font-weight: 700;
+            box-shadow: 0px 0px 14px -7px #19b3f0;
+            background-image: linear-gradient(45deg, #2f47ff 0%, #19c5f0 51%, #2f47ff 100%);
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation
+        }
+
+
+        .size-btn:hover {
+            background-position: right;
+            /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .size-btn:active {
+            transform: scale(0.95);
+        }
+
+
+
+        .display-box {
+            height: 4rem;
+            width: 14.3rem;
+            margin-top: 1rem;
+            margin-left: 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .cancel-btn {
+            margin-left: 0.5rem;
+            margin-top: 1rem;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            border-radius: 10px;
+            display: block;
+            border: 0px;
+            font-weight: 700;
+            box-shadow: 0px 0px 14px -7px #f0b719;
+            background-image: linear-gradient(45deg, #ff362f 0%, #f0b719 51%, #ff362f 100%);
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation
+        }
+
+
+        .cancel-btn:hover {
+            background-position: right;
+            /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .cancel-btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-move-left {
+            margin-left: 1.5rem;
+        }
+
+        .mar-top {
+            margin-top: 0.5rem;
+        }
+
+        .circle1 {
+            height: 20rem;
+            width: 20em;
+            background-color: yellowgreen;
+            border-radius: 50%;
+            position: absolute;
+            top: 4%;
+            left: 8%;
+        }
+
+        .circle2 {
+            height: 20rem;
+            width: 20em;
+            background-color: yellowgreen;
+            border-radius: 50%;
+            position: absolute;
+            top: 64%;
+            right: 8%;
+        }
+
+        /* .shape1 {
+            height: 10rem;
+            width: 10em;
+            background-color: yellowgreen;
+            border-radius: 50%;
+            position: absolute;
+            top: 59%;
+            left: 37%;
+        }
+
+        .shape2 {
+            height: 10rem;
+            width: 10rem;
+            background-color: yellowgreen;
+            border-radius: 50%;
+            position: absolute;
+            top: 23%;
+            right: 37%;
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="main-glass">
+            <div class="glass">
+                <table class="calculator">
+                    <tr>
+                        <td colspan="3"><input type="text" class="display-box" id="result" disabled></td>
+                        <td><input type="button" value="c" onclick="clearscreen()" id="btn" class="cancel-btn"></td>
+
+                    </tr>
+                    <tr>
+                        <td><input type="button" class="size-btn btn-move-left" value="1" onclick="display('1')"></td>
+                        <td><input type="button" class="size-btn" value="2" onclick="display('2')"></td>
+                        <td><input type="button" class="size-btn" value="3" onclick="display('3')"></td>
+                        <td><input type="button" class="size-btn" value="/" onclick="display('/')"></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="button" class="size-btn btn-move-left" value="4" onclick="display('4')"></td>
+                        <td><input type="button" class="size-btn" value="5" onclick="display('5')"></td>
+                        <td><input type="button" class="size-btn" value="6" onclick="display('6')"></td>
+                        <td><input type="button" class="size-btn" value="-" onclick="display('-')"></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="button" class="size-btn btn-move-left" value="7" onclick="display('7')"></td>
+                        <td><input type="button" class="size-btn" value="8" onclick="display('8')"></td>
+                        <td><input type="button" class="size-btn" value="9" onclick="display('9')"></td>
+                        <td><input type="button" class="size-btn" value="+" onclick="display('+')"></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="button" class="size-btn btn-move-left" value="." onclick="display('.')"></td>
+                        <td><input type="button" class="size-btn" value="0" onclick="display('0')"></td>
+                        <td><input type="button" class="size-btn" value="*" onclick="display('*')"></td>
+                        <td><input type="button" class="size-btn cancel-btn mar-top" value="=" onclick="calculate()"
+                                id="btn"></td>
+
+                    </tr>
+                </table>
+            </div>
+
+            <div class="shape1"></div>
+            <div class="shape2"></div>
+        </div>
+    </div>
+    <div class="circle1"></div>
+    <div class="circle2"></div>
+    <!-- HTML !-->
+
+
+
+
+    <script>
+        function clearscreen() {
+            document.getElementById("result").value = "";
+        }
+
+        function display(value) {
+            document.getElementById("result").value += value;
+        }
+
+        function calculate() {
+            var p = document.getElementById("result").value;
+            var q = eval(p);
+            document.getElementById("result").value = q;
+        }
+
+    </script>
+
+</body>
+
+</html>
